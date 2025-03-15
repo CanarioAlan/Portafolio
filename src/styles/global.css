@@ -1,2 +1,11 @@
 @import "tailwindcss";
-/* @import "themes.css"; */
+@theme {
+  --color-base: #090803;
+  --color-primario: #798672;
+  --color-texto: #d2e7ec;
+  --color-secundario: #eab221;
+  /* fuente  */
+  --font-base: "Poppins", serif;
+  --font-titulo: "Playfair Display", serif;
+  --font-secundario: "Space Grotesk", serif;
+}

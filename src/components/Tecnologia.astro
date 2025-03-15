@@ -1,32 +1,28 @@
 ---
+const tecnologias = [
+    {nombre: "HTML5", icono: "html5"},
+    {nombre: "CSS", icono: "css3"},
+    {nombre: "Tailwind CSS", icono: "tailwindcss"},
+    {nombre: "SASS", icono: "sass"},
+    {nombre: "JavaScript", icono: "javascript"},
+    {nombre: "Node.JS", icono: "nodejs"}, 
+    {nombre: "React", icono: "react"}, 
+    {nombre: "TypeScript", icono: "typescript"}, 
+    {nombre: "PHP", icono: "php"},
+    {nombre: "MYSQL", icono: "mysql"},
+    {nombre: "Laravel", icono: "laravel"},
+]
 
 ---
 <section>
-    <h2 class="text-2xl my-4">Mis tecnologia</h2>
-    <div class="flex flex-wrap  gap-5 justify-center items-center sm:h-56" >
-        <div class="group group-hover:scale-110 hover:scale-110 transition ">
-            <i class='text-6xl bx bxl-html5 group-hover:text-yellow-200'></i>
-            <p class="mt-2.5 group-hover:text-yellow-200">HTML 5</p>
-        </div>
-        <div class="group hover:scale-110 transition">
-            <i class='text-6xl bx bxl-css3 group-hover:text-yellow-200'></i>
-            <p class="mt-2.5 group-hover:text-yellow-200">CSS 3</p>
-        </div>
-        <div class="group hover:scale-110 transition">
-            <i class='text-6xl bx bxl-tailwind-css group-hover:text-yellow-200'></i>
-            <p class="mt-2.5 group-hover:text-yellow-200">Tailwind css</p>
-        </div>
-        <div class="group hover:scale-110 transition">
-            <i class='text-6xl bx bxl-javascript group-hover:text-yellow-200'></i>
-            <p class="mt-2.5 group-hover:text-yellow-200">JavaScript</p>
-        </div>
-        <div class="group hover:scale-110 transition">
-            <i class='text-6xl bx bxl-nodejs group-hover:text-yellow-200'></i>
-            <p class="mt-2.5 group-hover:text-yellow-200">Node.JS</p>
-        </div>
-        <div class="group hover:scale-110 transition">
-            <i class='text-6xl bx bxl-php group-hover:text-yellow-200'></i>
-            <p class="mt-2.5 group-hover:text-yellow-200">PHP</p>
-        </div>
+    <h2 class="text-2xl my-4 font-titulo">Mis tecnologia</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 transition-colors  ">
+        {tecnologias.map(tech => (
+            <div class="flex flex-col items-center gap-2 p-4 bg-primario/10 rounded-lg hover:bg-primario/20 transition-colors hover:animate-bounce">
+              <i class={`devicon-${tech.icono}-plain colored text-4xl`}></i>
+              <span class="text-text">{tech.nombre}</span>
+            </div>
+          ))}
     </div>
+    
 </section>

@@ -1,14 +1,38 @@
 ---
+const navItems = [
+  { nombre: 'Proyectos', href: '#proyectos' },
+  { nombre: 'Tecnologías', href: '#tecnologias' },
+  { nombre: 'Sobre mí', href: '#sobre-mi' },
+  { nombre: 'Contacto', href: '#contacto' },
+];
 ---
 <header class="sticky top-2.5">
-    <nav class="flex w-full  justify-between border-2 p-5 rounded-2xl mt-1 border-gray-600 backdrop-blur-3xl z-10 sm:py-2">
-        <a href="#" class="font-bold text-yellow-200 text-xl">AC</a>
-        <i class='sm:invisible bx bx-menu text-3xl '></i>
-        <ul class="hidden sm:flex gap-3">
-            <li><a href="#" class="hover:text-yellow-200 hover:font-semibold sm:text-xl ">Proyectos</a></li>
-            <li><a href="#" class="hover:text-yellow-200 hover:font-semibold sm:text-xl ">Tecnologias</a></li>
-            <li><a href="#" class="hover:text-yellow-200 hover:font-semibold sm:text-xl ">Sobre mí</a></li>
-            <li><a href="#" class="hover:text-yellow-200 hover:font-semibold sm:text-xl ">Contacto</a></li>
-        </ul>
+    <nav class="flex w-full  justify-between border-2 p-5 rounded-2xl mt-1 border-primario backdrop-blur-3xl z-10 sm:py-2">
+        <a href="#" class="font-titulo font-bold text-secundario text-xl">AC</a>
+        <button class="sm:hidden" id="menu-ham">
+            <i class='bx bx-menu text-3xl ' id="icon"></i>
+        </button>
+        <div class="hidden sm:block" id="menu-plegable">
+            <ul class="sm:flex gap-3"  id="menu">
+                {navItems.map(item => (
+                    <li><a href={item.href} class="text-text  hover:text-secundario hover:font-semibold sm:text-xl transition-colors">{item.nombre}</a></li>
+                  ))}
+            </ul>
+        </div>
     </nav>
 </header>
+<script>
+    const btnMenu = document.querySelector("#menu-ham")
+    const menuOculto = document.querySelector("#menu-plegable")
+    const menu = document.querySelector("#menu")
+    const icono = document.querySelector("#icon")
+//menu hamburguesa
+    btnMenu?.addEventListener('click', () => {
+    menuOculto?.classList.toggle('hidden');
+    menuOculto?.classList.add("w-3/4","h-65","absolute","top-19","left-[50%]","transform-[translate(-50%,-0%)]","bg-base", "border-1","border-primario","text-3xl", "rounded-b-2xl","transition-all", "transition-discrete");
+    menu?.classList.add("flex", "flex-col", "gap-8", "p-1.5")
+    icono?.classList.toggle("bx-menu");
+    icono?.classList.toggle("bx-x");
+});
+    
+</script>
