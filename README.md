@@ -1,4 +1,4 @@
-# 🌐 Portafolio Personal - Alan
+# 🌐 Portafolio Personal
 
 ¡Bienvenido a mi portafolio! Soy **Alan**, Técnico en Desarrollo de Software.
 

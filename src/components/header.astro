@@ -6,7 +6,7 @@ const navItems = [
   { nombre: 'Contacto', href: '#contacto' },
 ];
 ---
-<header class="sticky top-2.5">
+<header class="sticky top-2.5 z-10">
     <nav class="flex w-full  justify-between border-2 p-5 rounded-2xl mt-1 border-primario backdrop-blur-3xl z-10 sm:py-2">
         <a href="#" class="font-titulo font-bold text-secundario text-xl">AC</a>
         <button class="sm:hidden" id="menu-ham">
@@ -15,7 +15,7 @@ const navItems = [
         <div class="hidden sm:block" id="menu-plegable">
             <ul class="sm:flex gap-3"  id="menu">
                 {navItems.map(item => (
-                    <li><a href={item.href} class="text-text  hover:text-secundario hover:font-semibold sm:text-xl transition-colors">{item.nombre}</a></li>
+                    <li><a href={item.href} class="text-text  hover:text-secundario hover:font-semibold sm:text-xl transition-colors hover:underline">{item.nombre}</a></li>
                   ))}
             </ul>
         </div>

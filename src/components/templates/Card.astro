@@ -1,17 +1,18 @@
 ---
-const {titulo = "Nombre del proyecto", descripcion, tecnologia = [] } = Astro.props
+import { proyectos } from '../../script/proyectos';
 
 ---
-<div class="w-full h-130 mt-2.5 p-2.5 bg-primario/10 rounded-lg flex flex-col justify-between text-start sm:w-80 sm:h-110">
-    <img src="/public/img/home.png" alt="imagen del proyecto" class="rounded-t-sm">
+{proyectos.map((proyecto) => (
+    <a href={`../proyectos/${proyecto.slug}`} class="w-full h-130 mt-2.5 p-2.5 bg-primario/10 rounded-lg flex flex-col justify-between text-start sm:w-80 sm:h-110">
+      <img src=`${proyecto.imagen}` alt=`${proyecto.altertnativo}` class="rounded-t-sm">
     <div class="text-start">
-      <h2 class="text-secundario text-2xl font-semibold my-2">{titulo}</h2>
-      <p >{descripcion}</p>
+      <h2 class="text-secundario text-2xl font-semibold my-2">{proyecto.titulo}</h2>
+      <p >{proyecto.descripcion}</p>
     </div>
     <div class="mb-2.5">
-     <!-- {tecnologia.map( tect=> (<p class="inline-block px-2 py-1 text-sm  text-secundario bg-secundario/20 rounded-full">{tect}</p>))} -->
-      <p class="inline-block px-2 py-1 text-sm  text-secundario bg-secundario/20 rounded-full">PHP</p>
-      <p class="inline-block px-2 py-1 text-sm  text-secundario bg-secundario/20 rounded-full">SQL</p>
-      <p class="inline-block px-2 py-1 text-sm  text-secundario bg-secundario/20 rounded-full">CSS</p>
+     {proyecto.tecnologia.map((tech: string) => (
+      <p class="inline-block px-2 py-1 text-sm  text-secundario bg-secundario/20 rounded-full m-1.5 ">{tech}</p>
+    ))}
     </div>
-</div>
+    </a>
+))}
