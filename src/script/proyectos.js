@@ -1,7 +1,7 @@
 export const proyectos = [
   {
     titulo: "Inmobiliaria JDF",
-    imagen: "/img/Home.png",
+    imagen: "img/Home.png",
     altertnativo: "imagen de la pagina web de Inmobiliaria JDF",
     descripcion:
       "Un gran desafio de diseño y desarrollo, con un diseño moderno y minimalista, con un sistema de administración de propiedades y usuarios.",
@@ -14,7 +14,7 @@ export const proyectos = [
   },
   {
     titulo: "Sofi Nails SALON",
-    imagen: "/img/Home.png",
+    imagen: "img/Home.png",
     alternativo: "Imagen de la pagina web de Sofi Nails SALON",
     descripcion:
       "Un proyecto pesnado para crecer, con pocas tecnologia pero con las bases de puestas para el dia de mañana crecer como un serviocio completo en gestion de turnos y servicios.",
