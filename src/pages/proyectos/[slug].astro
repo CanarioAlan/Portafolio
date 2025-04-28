@@ -17,19 +17,18 @@ const { proyecto } = Astro.props;
     <main class="max-w-5xl mx-auto p-2.5 sm:p-0">
         <Header/>
         <section  class="text-center bg-base/10 mt-8">
-            <div class=" p-2.5 bg-primario/10 rounded-lg  text-start">
+            <div class="p-2.5 bg-primario/25 rounded-lg  text-start">
                 <div class="w-full my-2.5 sm:max-w-400 sm:h-90">
                     <img src=`${proyecto.imagen}` alt=`${proyecto.altertnativo}` class="w-full h-full rounded-lg">
                 </div>
                 <h1 class="text-4xl underline underline-offset-4 decoration-secundario my-2.5">{proyecto.titulo}</h1>
                 <p class="text-start">{proyecto.desarrollo}</p>
-                <ul class="flex flex-wrap justify-center mt-2.5 gap-2.5">
+                <ul class="flex flex-wrap justify-center sm:justify-start my-4 gap-2.5">
                     {proyecto.tecnologia.map((tech) => 
                     <li class="bg-secundario/20 py-0.5 px-2 rounded-2xl">{tech}</li>)}
                 </ul>
                 <div class="">
-                    <Btn/>
-                    <Btn/>
+                    <Btn nombre="Pre View" link={proyecto.link}/>
                 </div>
             </div>
         </section>

@@ -2,19 +2,20 @@
 import Botones from "../components/templates/btns.astro"
 ---
 <section class="min-h-[calc(100vh-180px)] w-full py-5 sm:grid grid-cols-2 items-center justify-center">
-    <div class="w-full h-52 sm:h-4/5 col-end-3 iframe">
-        <iframe src='https://my.spline.design/robotinteractiveevents-4d891658cc26eeeac32dbb938c15fa8b/' class="w-full h-full"></iframe>
-     </div>
-    <div class="row-end-1">
-        <h1 class="w-full text-3xl font-titulo">Hola!, Soy <span class="text-secundario font-bold font-secundario">Alan</span></h1>
+    <img src="/miLogo.png" alt="imagen secundaria" class="w-60 sm:w-80 mx-auto basis-0 grow">
+    <div class="row-end-1 basis-0 grow">
+        <div>
+            <h1 class="w-full text-3xl font-titulo">Hola!, Soy <span class="text-secundario font-bold font-secundario">Alan</span></h1>
         <p class="text-xl font-extralight">Desarrollador <span class="text-secundario font-semibold font-secundario">Full Stack</span></p>
         <div class="text-lg mt-2.5 sm:mt-0">
-            <p><span class="text-secundario">+1 año de experiencia </span>combinando aprendizaje autodidacta con formacion en una tecnicatura en desarrollo de software. Esta formación me brindo las bases sólidas en la programación, junto a las herramientas necesarias para crear soluciones eficientes y funcionales en el mundo digital. Siempre busco mejorar mis habilidades y enfrentar nuevos desafíos en el mundo del desarrollo</p>
+            <p>con <span class="text-secundario font-light font-secundario">+1 año de experiencia</span> combinando aprendizaje autodidacta con una tecnicatura en desarrollo de software, uilizando tecnologías como <span class="text-secundario font-light font-secundario">HTML, CSS, JavaScript, SQL, PHP.</span></p>
+        </div>
         </div>
         <div class="flex gap-2.5 justify-center flex-wrap mt-2.5">
             <Botones nombre="GitHub" link="https://github.com/CanarioAlan" icono="github"/>
-            <Botones nombre="Correo" icono="gmail"/>
-            <Botones nombre="Curriculum" icono="spreadsheet"/>
+            <Botones nombre="Linkedin" link="https://www.linkedin.com/in/canarioalan/" icono="linkedin"/>
+            <Botones nombre="Correo" link="mailto:alan.union.1998@gmail.com" icono="gmail"/>
+            <Botones nombre="Curriculum" icono="file-text"/>
         </div>
     </div>
 </section>

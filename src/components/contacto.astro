@@ -2,12 +2,12 @@
 
 ---
 
-<section class="w-full  mb-7">
+<section class="w-full  mb-7" id="contacto">
     <h2 class="text-2xl my-5 font-titulo underline underline-offset-8 decoration-secundario" id="contacto">Contacto</h2>
     <form class=" text-start px-2.5 sm:grid grid-cols-2 grid-rows-3 sm:w-fit sm:h-fit mx-auto gap-2.5" id="formulario">
         <div class="flex flex-col sm:w-2xs">
             <label for="nombre" class="text-2xl">Nombre:</label>
-            <input type="text" name="nombe" id="nombre" required class="py-2.5 px-1 border-1 border-gray-400 mt-2.5 rounded-lg">
+            <input type="text" name="nombre" id="nombre" required class="py-2.5 px-1 border-1 border-gray-400 mt-2.5 rounded-lg">
         </div>
         <div class="flex flex-col">
             <label for="email" class="text-2xl">E-mail:</label>
@@ -23,12 +23,12 @@
 <script>
     document.addEventListener("DOMContentLoaded", function (){
         const form = document.getElementById("formulario");
-  const inputs = form.querySelectorAll("input, textarea");
+  const inputs = form?.querySelectorAll("input, textarea");
   const btnEnviar = document.getElementById("enviar");
   const mensajeExito = document.createElement("p");
 
   mensajeExito.classList.add("hidden", "text-center", "bg-green-200", "text-green-800", "p-2", "rounded");
-  form.appendChild(mensajeExito);
+  form?.appendChild(mensajeExito);
 
   // Expresión regular para validar email
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -52,7 +52,7 @@
         errorSpan.textContent = mensaje;
       }
     } else {
-      input.classList.remove("border-red-500", "bg-red-200" , "text-red-600");
+      input.classList.remove("border-red-500", "bg-red-200" , "text-red-600", "text-base");
       if (errorSpan) {
         errorSpan.remove();
       }
@@ -63,27 +63,27 @@
   // Función para validar si el formulario está completo
   const validarFormulario = () => {
     let valido = true;
-    inputs.forEach(input => {
+    inputs?.forEach(input => {
       if (input.value.trim() === "" || (input.name === "email" && !emailRegex.test(input.value.trim()))) {
         valido = false;
       }
     });
     btnEnviar.disabled = !valido;
-    btnEnviar.classList.toggle("opacity-50", !valido);
+    btnEnviar?.classList.toggle("opacity-50", !valido);
   };
 
   // Eventos de validación en cada input
-  inputs.forEach(input => {
+  inputs?.forEach(input => {
     input.addEventListener("input", () => mostrarError(input, "Este campo es obligatorio"));
     input.addEventListener("blur", () => mostrarError(input, "Este campo es obligatorio"));
   });
 
   // Evento de envío del formulario
-  form.addEventListener("submit", (e) => {
+  form?.addEventListener("submit", (e) => {
     e.preventDefault();
-    form.reset();
+    form?.reset();
     btnEnviar.disabled = true;
-    btnEnviar.classList.add("opacity-50");
+    btnEnviar?.classList.add("opacity-50");
 
     mensajeExito.textContent = "Mensaje enviado exitosamente";
     mensajeExito.classList.remove("hidden");

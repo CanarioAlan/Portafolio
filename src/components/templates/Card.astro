@@ -1,11 +1,10 @@
 ---
 import { proyectos } from '../../script/proyectos';
-
 ---
 {proyectos.map((proyecto) => (
-    <a href={`../proyectos/${proyecto.slug}`} class="w-full h-130 mt-2.5 p-2.5 bg-primario/10 rounded-lg flex flex-col justify-between text-start sm:w-80 sm:h-110">
-      <img src=`${proyecto.imagen}` alt=`${proyecto.altertnativo}` class="rounded-t-sm">
-    <div class="text-start">
+      <a href={`../proyectos/${proyecto.slug}`} class="w-full h-130 mt-2.5 p-2.5 bg-primario/25 hover:bg-primario/35 transition-colors rounded-lg flex flex-col justify-between text-start sm:w-80 sm:h-110">
+      <img src={`${proyecto.imagen}`} alt={`${proyecto.altertnativo}`} class="rounded-t-sm">
+      <div class="text-start">
       <h2 class="text-secundario text-2xl font-semibold my-2">{proyecto.titulo}</h2>
       <p >{proyecto.descripcion}</p>
     </div>

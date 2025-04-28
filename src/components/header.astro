@@ -1,14 +1,14 @@
 ---
 const navItems = [
-  { nombre: 'Proyectos', href: '#proyectos' },
-  { nombre: 'Tecnologías', href: '#tecnologias' },
-  { nombre: 'Sobre mí', href: '#sobre-mi' },
-  { nombre: 'Contacto', href: '#contacto' },
+  { nombre: 'Proyectos', href: '/#proyectos' },
+  { nombre: 'Tecnologías', href: '/#tecnologias' },
+  { nombre: 'Sobre mí', href: '/#sobremi' },
+  { nombre: 'Contacto', href: '/#contacto' },
 ];
 ---
 <header class="sticky top-2.5 z-10">
     <nav class="flex w-full  justify-between border-2 p-5 rounded-2xl mt-1 border-primario backdrop-blur-3xl z-10 sm:py-2">
-        <a href="#" class="font-titulo font-bold text-secundario text-xl">AC</a>
+        <a href="/" class="font-titulo font-bold text-secundario text-xl">AC</a>
         <button class="sm:hidden" id="menu-ham">
             <i class='bx bx-menu text-3xl ' id="icon"></i>
         </button>
@@ -34,5 +34,4 @@ const navItems = [
     icono?.classList.toggle("bx-menu");
     icono?.classList.toggle("bx-x");
 });
-    
 </script>
