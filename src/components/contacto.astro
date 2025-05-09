@@ -2,100 +2,166 @@
 
 ---
 
-<section class="w-full  mb-7" id="contacto">
-    <h2 class="text-2xl my-5 font-titulo underline underline-offset-8 decoration-secundario" id="contacto">Contacto</h2>
-    <form class=" text-start px-2.5 sm:grid grid-cols-2 grid-rows-3 sm:w-fit sm:h-fit mx-auto gap-2.5" id="formulario">
-        <div class="flex flex-col sm:w-2xs">
-            <label for="nombre" class="text-2xl">Nombre:</label>
-            <input type="text" name="nombre" id="nombre" required class="py-2.5 px-1 border-1 border-gray-400 mt-2.5 rounded-lg">
-        </div>
-        <div class="flex flex-col">
-            <label for="email" class="text-2xl">E-mail:</label>
-            <input type="email" name="email" id="email" required class="py-2.5  px-1 border-1 border-gray-400 mt-2.5 rounded-lg">
-        </div>
-        <div class="flex flex-col col-span-full">
-            <label for="msj" class="text-2xl">Mensaje:</label>
-            <textarea name="msj" id="mensaje" required class="py-5 px-1 border-1 border-gray-400 mt-2.5 rounded-lg"></textarea>
-        </div>
-        <input type="submit" value="Enviar" id="enviar" class="w-full mt-4 py-2.5 text-3xl bg-yellow-200 text-blue-950 col-end-3 sm:h-16 hover:cursor-pointer">
-    </form>
+<section class="w-full mb-7" id="contacto">
+  <h2
+    class="text-2xl my-5 font-titulo underline underline-offset-8 decoration-secundario"
+    id="contacto"
+  >
+    Contacto
+  </h2>
+  <form
+    class="text-start px-2.5 sm:grid grid-cols-2 grid-rows-3 sm:w-fit sm:h-fit mx-auto gap-2.5"
+    id="formulario"
+  >
+    <div class="flex flex-col sm:w-2xs">
+      <label for="nombre" class="text-2xl">Nombre:</label>
+      <input
+        type="text"
+        name="nombre"
+        id="nombre"
+        required
+        class="py-2.5 px-1 border-1 border-gray-400 mt-2.5 rounded-lg"
+      />
+    </div>
+    <div class="flex flex-col">
+      <label for="email" class="text-2xl">E-mail:</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        required
+        class="py-2.5 px-1 border-1 border-gray-400 mt-2.5 rounded-lg"
+      />
+    </div>
+    <div class="flex flex-col col-span-full">
+      <label for="msj" class="text-2xl">Mensaje:</label>
+      <textarea
+        name="msj"
+        id="mensaje"
+        required
+        class="py-5 px-1 border-1 border-gray-400 mt-2.5 rounded-lg"></textarea>
+    </div>
+    <input
+      type="submit"
+      value="Enviar"
+      id="enviar"
+      class="w-full mt-4 py-2.5 text-3xl bg-yellow-200 text-blue-950 col-end-3 sm:h-16 hover:cursor-pointer"
+    />
+  </form>
 </section>
 <script>
-    document.addEventListener("DOMContentLoaded", function (){
-        const form = document.getElementById("formulario");
-  const inputs = form?.querySelectorAll("input, textarea");
-  const btnEnviar = document.getElementById("enviar");
-  const mensajeExito = document.createElement("p");
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("formulario");
+    const inputs = form?.querySelectorAll("input, textarea");
+    const btnEnviar = document.getElementById("enviar");
+    const mensajeExito = document.createElement("p");
 
-  mensajeExito.classList.add("hidden", "text-center", "bg-green-200", "text-green-800", "p-2", "rounded");
-  form?.appendChild(mensajeExito);
+    mensajeExito.classList.add(
+      "hidden",
+      "text-center",
+      "bg-green-200",
+      "text-green-800",
+      "p-2",
+      "rounded"
+    );
+    form?.appendChild(mensajeExito);
 
-  // Expresión regular para validar email
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // Expresión regular para validar email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  // Función para mostrar errores
-  const mostrarError = (input, mensaje) => {
-    let errorSpan = input.nextElementSibling;
+    // Función para mostrar errores
+    const mostrarError = (input, mensaje) => {
+      let errorSpan = input.nextElementSibling;
 
-    if (input.name === "email" && !emailRegex.test(input.value.trim())) {
-      mensaje = "Ingrese un email válido";
-    }
+      if (input.name === "email" && !emailRegex.test(input.value.trim())) {
+        mensaje = "Ingrese un email válido";
+      }
 
-    if (input.value.trim() === "" || (input.name === "email" && !emailRegex.test(input.value.trim()))) {
-      input.classList.add("border-red-500", "bg-red-200", "text-base", "text-red-600");
-      if (!errorSpan) {
-        errorSpan = document.createElement("span");
-        errorSpan.textContent = mensaje;
-        errorSpan.classList.add("text-red-600", "text-sm", "mt-1");
-        input.parentNode.appendChild(errorSpan);
+      if (
+        input.value.trim() === "" ||
+        (input.name === "email" && !emailRegex.test(input.value.trim()))
+      ) {
+        input.classList.add(
+          "border-red-500",
+          "bg-red-200",
+          "text-base",
+          "text-red-600"
+        );
+        if (!errorSpan) {
+          errorSpan = document.createElement("span");
+          errorSpan.textContent = mensaje;
+          errorSpan.classList.add("text-red-600", "text-sm", "mt-1");
+          input.parentNode.appendChild(errorSpan);
+        } else {
+          errorSpan.textContent = mensaje;
+        }
       } else {
-        errorSpan.textContent = mensaje;
+        input.classList.remove(
+          "border-red-500",
+          "bg-red-200",
+          "text-red-600",
+          "text-base"
+        );
+        if (errorSpan) {
+          errorSpan.remove();
+        }
       }
-    } else {
-      input.classList.remove("border-red-500", "bg-red-200" , "text-red-600", "text-base");
-      if (errorSpan) {
-        errorSpan.remove();
-      }
-    }
-    validarFormulario();
-  };
+      validarFormulario();
+    };
 
-  // Función para validar si el formulario está completo
-  const validarFormulario = () => {
-    let valido = true;
-    inputs?.forEach(input => {
-      if (input.value.trim() === "" || (input.name === "email" && !emailRegex.test(input.value.trim()))) {
-        valido = false;
-      }
+    // Función para validar si el formulario está completo
+    const validarFormulario = () => {
+      let valido = true;
+      inputs?.forEach((input) => {
+        if (
+          input.value.trim() === "" ||
+          (input.name === "email" && !emailRegex.test(input.value.trim()))
+        ) {
+          valido = false;
+        }
+      });
+      btnEnviar.disabled = !valido;
+      btnEnviar?.classList.toggle("opacity-50", !valido);
+    };
+
+    // Eventos de validación en cada input
+    inputs?.forEach((input) => {
+      input.addEventListener("input", () =>
+        mostrarError(input, "Este campo es obligatorio")
+      );
+      input.addEventListener("blur", () =>
+        mostrarError(input, "Este campo es obligatorio")
+      );
     });
-    btnEnviar.disabled = !valido;
-    btnEnviar?.classList.toggle("opacity-50", !valido);
-  };
 
-  // Eventos de validación en cada input
-  inputs?.forEach(input => {
-    input.addEventListener("input", () => mostrarError(input, "Este campo es obligatorio"));
-    input.addEventListener("blur", () => mostrarError(input, "Este campo es obligatorio"));
-  });
+    // Evento de envío del formulario
+    form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      form?.reset();
+      btnEnviar.disabled = true;
+      btnEnviar?.classList.add("opacity-50");
 
-  // Evento de envío del formulario
-  form?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    form?.reset();
-    btnEnviar.disabled = true;
-    btnEnviar?.classList.add("opacity-50");
+      mensajeExito.textContent = "Mensaje enviado exitosamente";
+      mensajeExito.classList.remove("hidden");
 
-    mensajeExito.textContent = "Mensaje enviado exitosamente";
-    mensajeExito.classList.remove("hidden");
+      const alerta = document.createElement("P");
+      alerta.textContent = "Mensaje enviado exitosamente";
+      alerta.classList.add(
+        "text-center",
+        "bg-green-200",
+        "text-green-800",
+        "p-2",
+        "rounded",
+        "col-span-full",
+        "w-full",
+        "mt-2.5",
+        "sm:mt-0"
+      );
+      form.appendChild(alerta);
 
-    const alerta = document.createElement("P")
-        alerta.textContent = "Mensaje enviado exitosamente";
-        alerta.classList.add("text-center", "bg-green-200", "text-green-800", "p-2", "rounded", "col-span-full", "w-full", "mt-2.5" ,"sm:mt-0");
-        form.appendChild(alerta);
-
-    setTimeout(() => {
+      setTimeout(() => {
         alerta.remove();
-    }, 3000);
+      }, 3000);
+    });
   });
-});
-    </script>
+</script>

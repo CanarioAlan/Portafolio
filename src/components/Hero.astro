@@ -2,7 +2,10 @@
 import Botones from "../components/templates/btns.astro"
 ---
 <section class="min-h-[calc(100vh-180px)] w-full py-5 sm:grid grid-cols-2 items-center justify-center">
-    <img src="/miLogo.png" alt="imagen secundaria" class="w-60 sm:w-80 mx-auto basis-0 grow">
+    <div class="relative">
+        <img src="/miLogo.png" alt="imagen secundaria" class="w-60 sm:w-80 mx-auto basis-0 grow">
+        <a href="#" class=" bg-green-100 text-green-800 px-2 py-1 text-sm rounded-full absolute top-1.5 right-0 animate-pulse hover:bg-green-200/50 hover:text-green-50 transition-colors">Disponible para Trabajar</a>
+    </div>
     <div class="row-end-1 basis-0 grow">
         <div>
             <h1 class="w-full text-3xl font-titulo">Hola!, Soy <span class="text-secundario font-bold font-secundario">Alan</span></h1>

@@ -29,8 +29,8 @@ const navItems = [
 //menu hamburguesa
     btnMenu?.addEventListener('click', () => {
     menuOculto?.classList.toggle('hidden');
-    menuOculto?.classList.add("w-3/4","h-65","absolute","top-19","left-[50%]","transform-[translate(-50%,-0%)]","bg-base", "border-1","border-primario","text-3xl", "rounded-b-2xl","transition-all", "transition-discrete");
-    menu?.classList.add("flex", "flex-col", "gap-8", "p-1.5")
+    menuOculto?.classList.add("w-full","h-80","absolute","top-20","left-1/2", "transform", "-translate-x-1/2","bg-base","backdrop-blur-sm","border-1","border-primario","text-3xl", "rounded-b-2xl","transition-all", "transition-discrete");
+    menu?.classList.add("flex", "flex-col", "gap-8", "p-1.5","mt-8")
     icono?.classList.toggle("bx-menu");
     icono?.classList.toggle("bx-x");
 });

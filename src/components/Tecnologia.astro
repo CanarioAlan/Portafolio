@@ -19,7 +19,7 @@ const tecnologias = [
     <h2 class="text-2xl font-titulo my-8 underline underline-offset-8 decoration-secundario">Mis tecnologias</h2>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 transition-colors  ">
         {tecnologias.map(tech => (
-            <div class="flex flex-col items-center gap-2 p-4 bg-primario/25 hover:bg-primario/40 transition-colors rounded-lg hover:animate-bounce">
+            <div class="flex flex-col items-center gap-2 p-4 bg-primario/25 hover:bg-primario/40 transition-colors rounded-lg hover:animate-boton">
               <i class={`devicon-${tech.icono}-plain colored text-4xl`}></i>
               <span class="text-text">{tech.nombre}</span>
             </div>
