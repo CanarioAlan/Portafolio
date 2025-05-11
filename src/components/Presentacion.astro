@@ -1,0 +1,26 @@
+---
+---
+
+<h1 class={'titulo-presentacion text-4xl font-bold text-white'}>
+  <span class="palabra">Hola!,</span>
+  <span class="palabra">Soy</span>
+  <span class="palabra text-secundario">Alan</span>
+</h1>
+
+<script is:inline>
+  const palabras = document.querySelectorAll(".palabra");
+
+  palabras.forEach((palabra, index) => {
+    palabra.style.opacity = "0";
+    palabra.style.transform = "translateY(20px)";
+    palabra.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+    palabra.style.transitionDelay = `${index * 0.3}s`;
+  });
+
+  window.addEventListener("load", () => {
+    palabras.forEach(palabra => {
+      palabra.style.opacity = "1";
+      palabra.style.transform = "translateY(0)";
+    });
+  });
+</script>
