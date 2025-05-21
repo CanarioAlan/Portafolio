@@ -1,7 +1,9 @@
 ---
 const {link, icono, nombre} = Astro.props
 ---
+<!-- <button class="transition-transform duration-300 hover:scale-105 hover:brightness-125"> -->
 <button class="border-1 border-primario rounded-lg text-2xl hover:bg-secundario hover:text-base hover:animate-pulse">
+    <!-- <a href=`${link}` target="_blank" class="px-4 py-2 bg-slate-800 text-white rounded-xl border border-white">{nombre} -->
     <a href=`${link}` target="_blank" class="p-1">{nombre}
         <i class={`text-2xl bx bxl-${icono}`}></i>
     </a>
