@@ -6,10 +6,9 @@
   <h2
     class="text-2xl my-5 font-titulo underline underline-offset-8 decoration-secundario"
     id="contacto"
-  >
-    Contacto
-  </h2>
-  <form
+  >Contacto</h2>
+  <p id="obligatorio" class="text-text my-2">Todos los campos son obligatorios</p>
+  <form action="enviar.php" method="post"
     class="text-start px-2.5 sm:grid grid-cols-2 grid-rows-3 sm:w-fit sm:h-fit mx-auto gap-2.5"
     id="formulario"
   >
@@ -20,6 +19,7 @@
         name="nombre"
         id="nombre"
         required
+        placeholder="Ingrese su nombre"
         class="py-2.5 px-1 border-1 border-gray-400 mt-2.5 rounded-lg"
       />
     </div>
@@ -29,6 +29,7 @@
         type="email"
         name="email"
         id="email"
+        placeholder="Ingrese su email"
         required
         class="py-2.5 px-1 border-1 border-gray-400 mt-2.5 rounded-lg"
       />
@@ -39,7 +40,8 @@
         name="msj"
         id="mensaje"
         required
-        class="py-5 px-1 border-1 border-gray-400 mt-2.5 rounded-lg"></textarea>
+        placeholder="Ingrese el mensaje, ej: Hola, me gustaria saber mas sobre su trabajo."
+        class="h-28 py-2 px-1 border-1 border-gray-400 mt-2.5 rounded-lg"></textarea>
     </div>
     <input
       type="submit"
@@ -55,6 +57,7 @@
     const inputs = form?.querySelectorAll("input, textarea");
     const btnEnviar = document.getElementById("enviar");
     const mensajeExito = document.createElement("p");
+    const obligatorio = document.getElementById("obligatorio");
 
     mensajeExito.classList.add(
       "hidden",
@@ -65,12 +68,11 @@
       "rounded"
     );
     form?.appendChild(mensajeExito);
-
     // Expresión regular para validar email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     // Función para mostrar errores
-    const mostrarError = (input, mensaje) => {
+    const mostrarError = (input: HTMLInputElement, mensaje: string) => {
       let errorSpan = input.nextElementSibling;
 
       if (input.name === "email" && !emailRegex.test(input.value.trim())) {
@@ -84,14 +86,13 @@
         input.classList.add(
           "border-red-500",
           "bg-red-200",
-          "text-base",
           "text-red-600"
         );
         if (!errorSpan) {
           errorSpan = document.createElement("span");
           errorSpan.textContent = mensaje;
           errorSpan.classList.add("text-red-600", "text-sm", "mt-1");
-          input.parentNode.appendChild(errorSpan);
+          input.parentNode?.appendChild(errorSpan);
         } else {
           errorSpan.textContent = mensaje;
         }
@@ -122,6 +123,7 @@
       });
       btnEnviar.disabled = !valido;
       btnEnviar?.classList.toggle("opacity-50", !valido);
+      obligatorio?.classList.remove("hidden");
     };
 
     // Eventos de validación en cada input
