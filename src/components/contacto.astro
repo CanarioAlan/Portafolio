@@ -1,16 +1,24 @@
 ---
-
+let sending = false;
+let success = false;
 ---
 
-<section class="w-full mb-7 fade-on-scroll opacity-0 translate-y-8 transition-all duration-1000" id="contacto">
+<section
+  class="w-full mb-7 fade-on-scroll opacity-0 translate-y-8 transition-all duration-1000"
+  id="contacto"
+>
   <h2
     class="text-2xl my-5 font-titulo underline underline-offset-8 decoration-secundario"
     id="contacto"
-  >Contacto</h2>
-  <p id="obligatorio" class="text-text my-2">Todos los campos son obligatorios</p>
-  <form action="../api/enviar" method="POST"
+  >
+    Contacto
+  </h2>
+  <p id="obligatorio" class="text-text my-2">
+    Todos los campos son obligatorios
+  </p>
+  <form
+    id="contact-form"
     class="text-start px-2.5 sm:grid grid-cols-2 grid-rows-3 sm:w-fit sm:h-fit mx-auto gap-2.5"
-    id="formulario"
   >
     <div class="flex flex-col sm:w-2xs">
       <label for="nombre" class="text-2xl">Nombre:</label>
@@ -41,7 +49,8 @@
         id="mensaje"
         required
         placeholder="Ingrese el mensaje, ej: Hola, me gustaria saber mas sobre su trabajo."
-        class="h-28 py-2 px-1 border-1 border-gray-400 mt-2.5 rounded-lg"></textarea>
+        class="h-28 py-2 px-1 border-1 border-gray-400 mt-2.5 rounded-lg"
+      ></textarea>
     </div>
     <input
       type="submit"
@@ -53,7 +62,7 @@
 </section>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("formulario");
+    const form = document.getElementById("contact-form");
     const inputs = form?.querySelectorAll("input, textarea");
     const btnEnviar = document.getElementById("enviar");
     const mensajeExito = document.createElement("p");
@@ -67,6 +76,7 @@
       "p-2",
       "rounded"
     );
+
     form?.appendChild(mensajeExito);
     // Expresión regular para validar email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -83,11 +93,7 @@
         input.value.trim() === "" ||
         (input.name === "email" && !emailRegex.test(input.value.trim()))
       ) {
-        input.classList.add(
-          "border-red-500",
-          "bg-red-200",
-          "text-red-600"
-        );
+        input.classList.add("border-red-500", "bg-red-200", "text-red-600");
         if (!errorSpan) {
           errorSpan = document.createElement("span");
           errorSpan.textContent = mensaje;
@@ -137,33 +143,39 @@
     });
 
     // Evento de envío del formulario
-    form?.addEventListener("submit", (e) => {
+    form?.addEventListener("submit", async (e) => {
       e.preventDefault();
-      form?.reset();
+
+      const formData = Object.fromEntries(new FormData(form).entries());
+
       btnEnviar.disabled = true;
       btnEnviar?.classList.add("opacity-50");
 
-      mensajeExito.textContent = "Mensaje enviado exitosamente";
-      mensajeExito.classList.remove("hidden");
+      try {
+        const res = await fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
 
-      const alerta = document.createElement("P");
-      alerta.textContent = "Mensaje enviado exitosamente";
-      alerta.classList.add(
-        "text-center",
-        "bg-green-200",
-        "text-green-800",
-        "p-2",
-        "rounded",
-        "col-span-full",
-        "w-full",
-        "mt-2.5",
-        "sm:mt-0"
-      );
-      form.appendChild(alerta);
+        const data = await res.json();
 
-      setTimeout(() => {
-        alerta.remove();
-      }, 3000);
+        if (data.success) {
+          alert("✅ Mensaje enviado con éxito");
+          form.reset();
+        } else {
+          alert("❌ Error al enviar el mensaje: " + data.error);
+        }
+      } catch (err) {
+        mensajeExito.textContent = "❌ Error en la conexión con el servidor";
+        mensajeExito.classList.remove("hidden");
+      } finally {
+        setTimeout(() => {
+          mensajeExito.classList.add("hidden");
+        }, 4000);
+        btnEnviar.disabled = false;
+        btnEnviar?.classList.remove("opacity-50");
+      }
     });
   });
 </script>
