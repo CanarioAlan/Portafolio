@@ -5,7 +5,7 @@ import netlify from '@astrojs/netlify/functions';
 
 // https://astro.build/config
 export default defineConfig({
-  // output: 'server', // necesario para usar endpoints
+  output: "static",
   adapter: netlify({}),
   vite: {
     plugins: [tailwindcss()]

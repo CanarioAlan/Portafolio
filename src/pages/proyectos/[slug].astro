@@ -5,10 +5,10 @@ import Btn from "../../components/templates/btns.astro";
 import Header from "../../components/header.astro"
 
 export async function getStaticPaths() {
-  return proyectos.map((proyecto) => ({
+    return proyectos.map((proyecto) => ({
     params: { slug: proyecto.slug },
     props: { proyecto },
-  }));
+}));
 }
 
 const { proyecto } = Astro.props;
