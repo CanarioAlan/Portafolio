@@ -11,5 +11,5 @@ export const proyectos = [
     slug: "inmobiliaria-jdf",
     // github: "",
     link: "https://jdfinmuebles.com/",
-  }
+  },
 ];
