@@ -8,7 +8,7 @@ const navItems = [
 ---
 <header class="sticky top-2.5 z-10">
     <nav class="flex w-full  justify-between items-center border-2 p-5 rounded-2xl mt-1 border-primario backdrop-blur-3xl z-10 sm:py-2">
-        <a href="/" class="font-titulo font-bold text-secundario text-xl"><img src="/logo.png" alt="logo" class="w-10"></a>
+        <a href="/" class="font-titulo font-bold text-secundario text-xl"><img src="/miLogo.png" alt="logo" class="w-10"></a>
         <button class="sm:hidden" id="menu-ham">
             <i class='bx bx-menu text-3xl ' id="icon"></i>
         </button>
@@ -29,8 +29,8 @@ const navItems = [
 //menu hamburguesa
     btnMenu?.addEventListener('click', () => {
     menuOculto?.classList.toggle('hidden');
-    menuOculto?.classList.add("w-full","h-80","absolute","top-20","left-1/2", "transform", "-translate-x-1/2","bg-base","backdrop-blur-sm","border-1","border-primario","text-3xl", "rounded-b-2xl","transition-all", "transition-discrete");
-    menu?.classList.add("flex", "flex-col", "gap-8", "p-1.5","mt-8")
+    menuOculto?.classList.add("w-full","h-60","absolute","top-20","left-1/2", "transform", "-translate-x-1/2","bg-base","backdrop-blur-sm","border-1","border-primario","text-3xl", "rounded-b-2xl","transition-all", "transition-discrete");
+    menu?.classList.add("flex", "flex-col", "gap-4", "p-1.5","mt-4")
     icono?.classList.toggle("bx-menu");
     icono?.classList.toggle("bx-x");
 });
