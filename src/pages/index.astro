@@ -9,7 +9,8 @@ import Header from '../components/header.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout>
+<Layout >
+    <canvas id="particle"></canvas>
 	<main class="max-w-5xl mx-auto px-2 text-center text-texto">
 		<Hero/>
 		<Header/>
@@ -20,3 +21,62 @@ import Layout from '../layouts/Layout.astro';
 		<Footer/>
 	</main>
 </Layout>
+<script>
+	(function () {
+			const PI2 = Math.PI * 2;
+            const c = document.getElementById('particle');
+            const ctx = c.getContext('2d');
+            let w, h, bubbles = [], ripples = [];
+
+            function resize() {
+                w = c.width = c.offsetWidth;
+                h = c.height = c.offsetHeight;
+                bubbles = [];
+                for (let i = 0; i < 80; i++) {
+                    bubbles.push({
+                        x: Math.random() * w, y: Math.random() * h,
+                        r: Math.random() * 4 + 1,
+                        vy: -(Math.random() * 1.5 + 0.3),
+                        vx: (Math.random() - 0.5) * 0.5,
+                        wobble: Math.random() * PI2
+                    });
+                }
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, w, h);
+                bubbles.forEach(b => {
+                    b.wobble += 0.03;
+                    b.x += b.vx + Math.sin(b.wobble) * 0.5;
+                    b.y += b.vy;
+                    if (b.y < -10) { b.y = h + 10; b.x = Math.random() * w; }
+                    if (b.x < 0) b.x = w;
+                    if (b.x > w) b.x = 0;
+                    // splash at surface
+                    if (b.y < 10 && b.y > 0) {
+                        ripples.push({ x: b.x, y: 10, r: 0, o: 0.3 });
+                    }
+                    ctx.beginPath();
+                    ctx.arc(b.x, b.y, b.r, 0, PI2);
+                    ctx.fillStyle = `rgba(234,278,33,${0.3 + Math.sin(b.wobble) * 0.15})`;
+                    ctx.fill();
+                    ctx.strokeStyle = `rgba(234,278,33,${0.15 + Math.sin(b.wobble) * 0.1})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                });
+                ripples = ripples.filter(r => r.o > 0.01);
+                ripples.forEach(r => {
+                    ctx.beginPath();
+                    ctx.ellipse(r.x, r.y, r.r, r.r * 0.2, 0, 0, PI2);
+                    ctx.strokeStyle = `rgba(234,278,33,${r.o})`;
+                    ctx.lineWidth = 0.8;
+                    ctx.stroke();
+                    r.r += 0.5;
+                    r.o -= 0.008;
+                });
+                requestAnimationFrame(draw);
+            }
+            resize(); draw();
+            window.addEventListener('resize', resize);
+        })();
+</script>
