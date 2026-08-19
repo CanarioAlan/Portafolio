@@ -7,14 +7,16 @@ import Presentacion from "../components/Presentacion.astro";
   class="min-h-[calc(100vh-180px)] w-full py-5 sm:grid grid-cols-2 items-center justify-center"
 >
   <div class="relative">
-    <img
+    <div class="w-60 h-70 mx-auto animate-blob overflow-hidden border-secundario/50 sm:w-80 sm:h-full">
+      <img
       src="/miFoto.png"
       alt="imagen secundaria"
-      class="w-60 h-70 object-contain rounded-full grayscale-100 sm:w-80 sm:h-full mx-auto" id="miFoto"
-    />
+      class="w-full h-full object-cover grayscale-100 bg-secundario/10"
+      />
+    </div>
     <a
       href="https://www.linkedin.com/in/canarioalan/" target="_blank"
-      class="bg-green-100 text-green-800 px-2 py-1 text-sm rounded-full absolute top-1.5 right-0 animate-pulse hover:bg-green-200/50 hover:text-green-50 transition-colors"
+      class="bg-green-100 text-green-800 px-2 py-1 text-sm rounded-full absolute top-1.5 right-0 animate-pulse hover:bg-green-200/50 hover:text-green-50 transition-colors disponible"
       >Disponible para Trabajar</a
     >
   </div>
@@ -28,12 +30,12 @@ import Presentacion from "../components/Presentacion.astro";
       </p>
       <div class="text-lg mt-2.5 sm:mt-0">
         <p>
+          Apasionado por la arquitectura web y la resolución de problemas.
           con <span class="text-secundario font-light font-secundario"
             >+1 año de experiencia</span
-          > combinando aprendizaje autodidacta con una tecnicatura en desarrollo
-          de software, uilizando tecnologías como <span
+          > Combino mi formación técnica con experiencia práctica en el desarrollo backend y frontend con <span
             class="text-secundario font-light font-secundario"
-            >HTML, CSS, JavaScript, SQL, PHP.</span>
+            >JS, PHP y bases de datos relacionales.</span>
         </p>
       </div>
     </div>
@@ -53,7 +55,7 @@ import Presentacion from "../components/Presentacion.astro";
         link="mailto:alan.union.1998@gmail.com"
         icono="gmail"
       />
-      <Botones nombre="Curriculum" link="/cv-canario-alan.pdf" icono="file-text" />
+      <Botones nombre="Curriculum" link="/cv-canario-alan.pdf" icono="bx bx-id-card" />
     </div>
   </div>
 </section>

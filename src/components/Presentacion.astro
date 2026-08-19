@@ -1,22 +1,27 @@
 ---
 ---
 
-<h1 class={'titulo-presentacion text-4xl font-bold text-white'}>
-  <span class="palabra">Hola!</span>
-  <span class="palabra">Soy</span>
-  <span class="palabra text-secundario">Alan</span>
+<h1 class={'titulo-presentacion text-4xl font-bold '}>
+  <span id="saludo"></span>, Soy
+  <span class="palabra text-secundario NombreCompleto">Alan Canario</span>.
 </h1>
 
-<script is:inline>
-  const titulo = document.querySelector(".titulo-presentacion");
-  if (titulo) {
-    titulo.style.opacity = "0";
-    titulo.style.transform = "translateY(20px)";
-    titulo.style.transition = "opacity 1s ease, transform 1s ease";
-
-    window.addEventListener("load", () => {
-      titulo.style.opacity = "1";
-      titulo.style.transform = "translateY(0)";
-    });
+<script >
+  import { animate, scrambleText } from 'animejs';
+  const saludoE = document.getElementById('saludo');
+  const hora = new Date().getHours();
+  let saludo = '';
+  if (hora >= 6 && hora < 12) {
+    saludo = 'Buenos días';
+  } else if (hora >= 12 && hora < 18) {
+    saludo = 'Buenas tardes';
+  } else {
+    saludo = 'Buenas noches';
   }
+  saludoE.textContent = saludo;
+  animate('.NombreCompleto', {
+    innerHTML: scrambleText(),
+    loop: true,
+    loopDelay: 2500,
+  });
 </script>
