@@ -7,10 +7,10 @@ const navItems = [
 ];
 ---
 <header class="sticky top-2.5 z-10">
-    <nav class="flex w-full  justify-between items-center border-2 p-5 rounded-2xl mt-1 border-primario backdrop-blur-3xl z-10 sm:py-2">
-        <a href="/" class="font-titulo font-bold text-secundario text-xl"><img src="/miLogo.png" alt="logo" class="w-10"></a>
+    <nav class="flex w-full  justify-between items-center border-2 p-3 rounded-2xl mt-1 border-texto backdrop-blur-3xl z-10 sm:py-2">
+        <a href="https://canario-alan.netlify.app" class="font-titulo font-bold text-secundario text-xl"><img src="/miLogo.png" alt="logo" class="w-1/5 sm:w-[60px]"></a>
         <button class="sm:hidden" id="menu-ham">
-            <i class='bx bx-menu text-3xl ' id="icon"></i>
+            <i class='bx bx-menu text-4xl ' id="icon"></i>
         </button>
         <div class="hidden sm:block" id="menu-plegable">
             <ul class="sm:flex gap-3"  id="menu">
@@ -22,16 +22,44 @@ const navItems = [
     </nav>
 </header>
 <script>
+    import { animate, scrambleText } from 'animejs';
     const btnMenu = document.querySelector("#menu-ham")
     const menuOculto = document.querySelector("#menu-plegable")
     const menu = document.querySelector("#menu")
     const icono = document.querySelector("#icon")
-//menu hamburguesa
+    const navLinks = document.querySelectorAll("#menu a");
+    const sections = document.querySelectorAll("section[id]");
+    //menu hamburguesa
     btnMenu?.addEventListener('click', () => {
     menuOculto?.classList.toggle('hidden');
-    menuOculto?.classList.add("w-full","h-60","absolute","top-20","left-1/2", "transform", "-translate-x-1/2","bg-base","backdrop-blur-sm","border-1","border-primario","text-3xl", "rounded-b-2xl","transition-all", "transition-discrete");
-    menu?.classList.add("flex", "flex-col", "gap-4", "p-1.5","mt-4")
+    menuOculto?.classList.add("w-full","h-96","absolute","top-20","left-1/2", "transform", "-translate-x-1/2","bg-black","border-1","border-primario","text-3xl", "rounded-b-2xl","transition-all", "transition-discrete");
+    menu?.classList.add("flex", "flex-col", "justify-evenly", "p-1.5", "h-full", "text-center");
     icono?.classList.toggle("bx-menu");
     icono?.classList.toggle("bx-x");
-});
+    });
+    const observerOptions = {
+        root: null,
+        rootMargin: "-20% 0px -65% 0px",
+        threshold: 0
+    };
+    const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const currentId = entry.target.getAttribute("id");
+                    navLinks.forEach((link) => {
+                        const href = link.getAttribute("href");
+                        if (href && href.endsWith(`#${currentId}`)) {
+                            // Clases para el enlace ACTIVO
+                            link.classList.add("text-secundario", "font-bold", "underline");
+                            link.classList.remove("text-text");
+                        } else {
+                            // Clases para enlaces INACTIVOS
+                            link.classList.remove("text-secundario", "font-bold", "underline");
+                            link.classList.add("text-text");
+                        }
+                    });
+                }
+            });
+    }, observerOptions);
+    sections.forEach((section) => observer.observe(section));
 </script>
