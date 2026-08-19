@@ -15,7 +15,7 @@ const navItems = [
         <div class="hidden sm:block" id="menu-plegable">
             <ul class="sm:flex gap-3"  id="menu">
                 {navItems.map(item => (
-                    <li><a href={item.href} class="text-text  hover:text-secundario hover:font-semibold sm:text-xl transition-colors hover:underline">{item.nombre}</a></li>
+                    <li><a href={item.href} class="enlace text-text  hover:text-secundario hover:font-semibold sm:text-xl transition-colors hover:underline">{item.nombre}</a></li>
                   ))}
             </ul>
         </div>
@@ -62,4 +62,15 @@ const navItems = [
             });
     }, observerOptions);
     sections.forEach((section) => observer.observe(section));
+    navLinks.forEach((link) => {
+  const originalText = link.textContent;
+
+  link.addEventListener('mouseenter', () => {
+    animate(link, {
+      innerHTML: scrambleText(originalText),
+      duration: 800,
+      easing: 'easeInOutQuad'
+    });
+  });
+});
 </script>
