@@ -1,9 +1,11 @@
 ---
-const {link, icono, nombre} = Astro.props
+const { link, icono = '', nombre } = Astro.props;
+const tieneIcono = Boolean(icono);
+const iconoClase = icono.startsWith('bx') ? icono : `bx bxl-${icono}`;
 ---
 <button class="border border-texto/50 rounded-2xl hover:border-secundario/60 ">
-   <a href={`${link}`} target="_blank" class="group inline-flex items-center p-2 border border-texto/50 rounded-2xl hover:border-secundario/60 transition-colors duration-1000 ">
-        <i class={`text-2xl ${icono.startsWith('bx') ? icono : `bx bxl-${icono}`}`}></i>
+    <a href={link} target="_blank" rel="noopener noreferrer" class="group inline-flex items-center p-2 border border-texto/50 rounded-2xl hover:border-secundario/60 transition-colors duration-1000">
+        {tieneIcono && <i class={`text-2xl ${iconoClase}`}></i>}
         <span class="overflow-hidden whitespace-nowrap transition-all duration-400 ease-in-out max-w-xs opacity-100 ml-2 delay-300 md:max-w-0 md:opacity-0 md:ml-0 md:group-hover:max-w-xs md:group-hover:opacity-100 md:group-hover:ml-2 md:group-hover:text-secundario">
             {nombre}
         </span>
