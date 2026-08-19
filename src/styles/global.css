@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @theme {
   --color-base: #233336;
-  --color-texto: #ffeede;
+  --color-texto: #bcbab8;
   --color-secundario: #eab221;
   /* fuente  */
   --font-base: "Poppins", serif;
@@ -50,9 +50,5 @@ body {
     right: 0;
     z-index: 0;
     pointer-events: none;
-  }
-
-  .animate-blob {
-    animation: blob 8s infinite ease-in-out;
   }
 }
