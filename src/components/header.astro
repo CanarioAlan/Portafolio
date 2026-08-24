@@ -63,14 +63,12 @@ const navItems = [
     }, observerOptions);
     sections.forEach((section) => observer.observe(section));
     navLinks.forEach((link) => {
-  const originalText = link.textContent;
-
-  link.addEventListener('mouseenter', () => {
-    animate(link, {
-      innerHTML: scrambleText(originalText),
-      duration: 800,
-      easing: 'easeInOutQuad'
+    link.addEventListener('mouseenter', () => {
+        animate(link, {
+        innerHTML: scrambleText(),
+        duration: 800,
+        easing: 'easeInOutQuad'
+        });
     });
-  });
 });
 </script>
