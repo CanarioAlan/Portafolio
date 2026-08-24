@@ -2,7 +2,7 @@
 import { proyectos } from '../../script/proyectos';
 ---
 {proyectos.map((proyecto) => (
-      <a href={`../proyectos/${proyecto.slug}`} class="w-full h-130 mt-2.5 p-2.5 bg-primario/25 hover:bg-primario/35 transition-colors rounded-lg flex flex-col justify-between text-start sm:w-80 sm:h-110">
+      <a href={`../proyectos/${proyecto.slug}`} class="group w-full h-120 mt-2.5 p-2.5 bg-base/10 border-1 border-secundario/10 backdrop-blur-sm rounded-lg flex flex-col justify-between text-start hover:shadow-xl shadow-secundario/5 sm:w-80 sm:h-110">
       <img src={`${proyecto.imagen}`} alt={`${proyecto.altertnativo}`} class="rounded-t-sm">
       <div class="text-start">
       <h2 class="text-secundario text-2xl font-semibold my-2">{proyecto.titulo}</h2>
@@ -10,7 +10,7 @@ import { proyectos } from '../../script/proyectos';
     </div>
     <div class="mb-2.5">
      {proyecto.tecnologia.map((tech: string) => (
-      <p class="inline-block px-2 py-1 text-sm  text-secundario bg-secundario/20 rounded-full m-1.5 ">{tech}</p>
+      <p class="inline-block border-1 border-secundario/10 px-2 py-1 text-sm  text-secundario group-hover:bg-secundario/10 group-hover:border-transparent transition-colors duration-300  rounded-full m-1.5 ">{tech}</p>
     ))}
     </div>
     </a>
