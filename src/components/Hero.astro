@@ -6,20 +6,25 @@ import Presentacion from "../components/Presentacion.astro";
 <section
   class="min-h-[calc(100vh-180px)] w-full py-5 sm:grid grid-cols-2 items-center justify-center"
 >
-  <div class="relative">
-    <div class="w-60 h-70 mx-auto animate-blob overflow-hidden border-secundario/50 sm:w-80 sm:h-full">
-      <img
+<div class="relative">
+  <div class="group relative w-60 h-70 mx-auto animate-blob overflow-hidden border-secundario/50 sm:w-80 sm:h-full cursor-pointer">
+    <img
       src="/miFoto.png"
-      alt="imagen secundaria"
+      alt="imagen principal del desarrollador Canario Alan"
       class="w-full h-full object-cover grayscale-100 bg-secundario/10"
-      />
-    </div>
-    <a
-      href="https://www.linkedin.com/in/canarioalan/" target="_blank"
-      class="bg-green-100 text-green-800 px-2 py-1 text-sm rounded-full absolute top-1.5 right-0 animate-pulse hover:bg-green-200/50 hover:text-green-50 transition-colors disponible"
-      >Disponible para Trabajar</a
-    >
+    />
+    <img
+      src="/mifoto-lowPoly.png"
+      alt="imagen secundaria  del desarrollador Canario Alan en low poly"
+      class="absolute inset-0 w-full h-full object-cover grayscale-100 bg-secundario/10 opacity-100 transition-opacity duration-500 ease-in-out group-hover:opacity-0"
+    />
   </div>
+  <a
+    href="https://www.linkedin.com/in/canarioalan/" target="_blank"
+    class="bg-green-100 text-green-800 px-2 py-1 text-sm rounded-full absolute top-1.5 right-0 animate-pulse hover:bg-green-200/50 hover:text-green-50 transition-colors disponible"
+    >Disponible para Trabajar</a
+  >
+</div>
   <div class="row-end-1 basis-0 grow">
     <Presentacion />
     <div>
