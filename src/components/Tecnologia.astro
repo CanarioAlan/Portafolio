@@ -8,6 +8,9 @@ const tecnologias = [
     {nombre: "Astro", icono: "astro", categoria: "frontend"},
     {nombre: "PHP", icono: "php", categoria: "backend"},
     {nombre: "MYSQL", icono: "mysql", categoria: "backend"},
+    {nombre: "Git", icono: "git", categoria: "herramientas"},
+    {nombre: "GitHub", icono: "github", categoria: "herramientas"},
+    {nombre: "Notion", icono: "notion", categoria: "herramientas"},
     // {nombre: "Node.JS", icono: "nodejs"}, 
     // {nombre: "React", icono: "react"}, 
     // {nombre: "TypeScript", icono: "typescript"}, 
@@ -15,20 +18,23 @@ const tecnologias = [
 ]
 const frontend = tecnologias.filter(tech => tech.categoria === "frontend");
 const backend = tecnologias.filter(tech => tech.categoria === "backend");
+const herramientas = tecnologias.filter(tech => tech.categoria === "herramientas");
 ---
 <section id="tecnologias" class="fade-on-scroll opacity-0 translate-y-8 transition-all duration-1000">
     <h2 class="text-2xl font-titulo my-8 font-bold tracking-wider">
       Mis <span class="text-secundario">tecnologias</span>
     </h2>
     <div class="flex flex-col gap-8">
-      <h3 class="text-xl font-semibold mb-4 text-left">Frontend</h3>
-      <div class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-2 transition-colors  ">
-        {frontend.map(tech => (
-          <div class="flex flex-col items-center gap-2 p-2 bg-secundario/5 hover:bg-primario/40 transition-colors rounded-lg hover:animate-boton backdrop-blur-sm">
-              <i class={`devicon-${tech.icono}-plain colored text-4xl`}></i>
-              <span class="text-text">{tech.nombre}</span>
-            </div>
-          ))}
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-left">Frontend</h3>
+          <div class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-2 transition-colors">
+            {frontend.map(tech => (
+              <div class="flex flex-col items-center gap-2 p-2 bg-secundario/5 hover:bg-primario/40 transition-colors rounded-lg hover:animate-boton backdrop-blur-sm">
+                <i class={`devicon-${tech.icono}-plain colored text-4xl`}></i>
+                <span class="text-text">{tech.nombre}</span>
+              </div>
+            ))}
+          </div>
       </div>
       <div>
         <h3 class="text-xl font-semibold mb-4 text-left">Backend</h3>
@@ -40,5 +46,17 @@ const backend = tecnologias.filter(tech => tech.categoria === "backend");
             </div>
           ))}
         </div>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-left">Herramientas</h3>
+        <div class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-2 transition-colors  ">
+          {herramientas.map(tech => (
+            <div class="flex flex-col items-center gap-2 p-2 bg-secundario/5 hover:bg-primario/40 transition-colors rounded-lg hover:animate-boton backdrop-blur-sm">
+              <i class={`devicon-${tech.icono}-plain colored text-4xl`}></i>
+              <span class="text-text">{tech.nombre}</span>
+            </div>
+          ))}
+        <div>
+      </div>
     </div>
 </section>
