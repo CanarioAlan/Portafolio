@@ -37,6 +37,32 @@
       border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%;
     }
   }
+  @keyframes slideInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes checkDraw {
+    0% {
+      stroke-dashoffset: 24;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes crossDraw {
+    0% {
+      stroke-dashoffset: 20;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
 }
 body {
   background: radial-gradient(ellipse at 50% 100%, #292c14, #000);
@@ -50,5 +76,15 @@ body {
     right: 0;
     z-index: 0;
     pointer-events: none;
+  }
+  .show-feedback {
+    display: flex !important;
+    animation: slideInUp 0.4s ease-out forwards;
+  }
+  .animate-check {
+    animation: checkDraw 0.5s 0.2s ease-out forwards;
+  }
+  .animate-cross {
+    animation: crossDraw 0.4s 0.15s ease-out forwards;
   }
 }
